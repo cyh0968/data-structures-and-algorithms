@@ -101,13 +101,18 @@ class BinarySearchTree {
     // the children's subtree are inserted to other node
     // the successor should be greater than the deleted node's left node, but less than the right node
     remove(value) {
-        if (!this.root) return;
-
+        if (!this.root) return null;
         let currentNode = this.root;
+
         let parentNode = this.root;
         let isLeft = true;
         let targetNode = null;
-        
+
+        let successorNode = null;
+        let successorParenetNode = this.root;
+        let isLeftSuccessor = false;
+
+
         // find target node
         while (currentNode) {
             let comparisonResult = compareNumbers(currentNode.value, value);
@@ -128,10 +133,6 @@ class BinarySearchTree {
             }
         }
 
-
-        let successorNode = null;
-        let successorParenetNode = this.root;
-        let isLeftSuccessor = false;
         // the target node has only one child node
         if (!currentNode.left ^ !currentNode.right) {
             successorParenetNode = currentNode;
@@ -154,10 +155,14 @@ class BinarySearchTree {
         }
 
         // remove the target node and move successor
-        if (isLeft) {
-            parentNode.left = successorNode;
+        if (this.root.value !== value) {
+            if (isLeft) {
+                parentNode.left = successorNode;
+            } else {
+                parentNode.right = successorNode;
+            }
         } else {
-            parentNode.right = successorNode;
+            this.root = successorNode;
         }
 
         if (isLeftSuccessor) {
@@ -173,6 +178,7 @@ class BinarySearchTree {
         targetNode.right = null;
 
         return targetNode;
+
     }
 }
 
@@ -217,8 +223,8 @@ tree.insert(43);
 
 // Result should be the following tree structure
 //      9
-//  4         2
-//1    6   15   170
+//  4         20
+//1    6   15    170
 //  
 //                170
 //           45  
@@ -251,11 +257,13 @@ tree.insert(43);
 
 
 // Test remove() method
-const removedNode = tree.remove(38); // should return node 38
-console.log('removed node \n',removedNode); // this should 38 without left, right children
-console.log('root node \n', traverse(tree.root));
-console.log('parent node \n',tree.lookup(45)); // this left node should be 39
-console.log('successor node \n',tree.lookup(39)); // this child should be 42 on right
+// const removedNode = tree.remove(38); // should return node 38
+// console.log('removed node \n',removedNode); // this should 38 without left, right children
+// console.log('root node \n', traverse(tree.root));
+// console.log('parent node \n',tree.lookup(45)); // this left node should be 39
+// console.log('successor node \n',tree.lookup(39)); // this child should be 42 on right
+tree.remove(9);
+console.log(tree.root);
 
 // console.log('remove', tree.remove(170)); // should return node 170
 // console.log(traverse(tree.root));
