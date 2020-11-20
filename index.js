@@ -17,34 +17,32 @@ class BinarySearchTree {
     insert(value) {
         if (!this.root) {
             this.root = new Node(value);
-            return;
+            return this;
         }
 
         let currentNode = this.root;
 
-        while (currentNode) {
-            let nextNode = null;
-
+        while (true) {
             const comparisonResult = compareNumbers(currentNode.value, value);
-
             if (comparisonResult > 0) {
-                nextNode = currentNode.left;
                 if (!currentNode.left) {
                     currentNode.left = new Node(value);
+                    return this;
                 }
+                currentNode = currentNode.left;
             } else if (comparisonResult < 0) {
-                nextNode = currentNode.right;
                 if (!currentNode.right) {
                     currentNode.right = new Node(value);
+                    return this;
                 }
+                currentNode = currentNode.right;
             }
-            currentNode = nextNode;
         }
     }
 
     lookup(value) {
         if (!this.root) {
-            return null;
+            return false;
         }
 
         let currentNode = this.root;
@@ -52,16 +50,13 @@ class BinarySearchTree {
         while (currentNode) {
             const comparisonResult = compareNumbers(currentNode.value, value);
             if (comparisonResult > 0) {
-                if (!currentNode.left) return null;
                 currentNode = currentNode.left;
             } else if (comparisonResult < 0) {
-                if (!currentNode.right) return null;
                 currentNode = currentNode.right;
             } else if (comparisonResult === 0) {
                 return currentNode;
             }
         }
-        return null;
     }
 
     findSuccessor(node) {
@@ -111,7 +106,6 @@ class BinarySearchTree {
         let successorNode = null;
         let successorParenetNode = this.root;
         let isLeftSuccessor = false;
-
 
         // find target node
         while (currentNode) {
@@ -178,7 +172,6 @@ class BinarySearchTree {
         targetNode.right = null;
 
         return targetNode;
-
     }
 }
 
@@ -235,7 +228,7 @@ tree.insert(43);
 
 // Test insert() method
 // JSON.stringify(traverse(tree.root));
-// console.dir(tree.root);
+console.dir(tree.root);
 
 // Test lookup() method
 // if it fails to find the target node,
@@ -262,8 +255,8 @@ tree.insert(43);
 // console.log('root node \n', traverse(tree.root));
 // console.log('parent node \n',tree.lookup(45)); // this left node should be 39
 // console.log('successor node \n',tree.lookup(39)); // this child should be 42 on right
-tree.remove(9);
-console.log(tree.root);
+// tree.remove(9);
+// console.log(tree.root);
 
 // console.log('remove', tree.remove(170)); // should return node 170
 // console.log(traverse(tree.root));
