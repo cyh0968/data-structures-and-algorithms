@@ -25,14 +25,18 @@ class Graph {
     }
 
     addEdge(node1, node2) {
+        // a node node can't have connection to itself
         if (node1 == node2) return false;
 
+        // if there is no node, then create the node
         if (!this.adjacentList.hasOwnProperty(node1))
             this.addVertex(node1);
         
         if (!this.adjacentList.hasOwnProperty(node2))
             this.addVertex(node2);
         
+        // as long as it does not have any edge in the list
+        // it adds the new edge
         if (!this.adjacentList[node1].includes(node2))
             this.adjacentList[node1].push(node2);
         
