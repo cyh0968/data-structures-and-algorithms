@@ -12,15 +12,17 @@ function findFactorialIterative(number) {
     for (let index = number - 1; index > 1; index--) {
         result *= index;
     }
-    
+
     return result;
 }
 
 module.exports = () => {
-    console.log('recursive', findFactorialRecursive(0)) // 0
-    console.log('iterative', findFactorialIterative(0)) // 0
+    console.log('recursive', findFactorialRecursive(0)) // 1
+    console.log('iterative', findFactorialIterative(0)) // 1
     console.log('recursive', findFactorialRecursive(1)) // 1
     console.log('iterative', findFactorialIterative(1)) // 1
+    console.log('recursive', findFactorialRecursive(2)) // 2
+    console.log('iterative', findFactorialIterative(2)) // 2
     console.log('recursive', findFactorialRecursive(5)) // 120
     console.log('iterative', findFactorialIterative(5)) // 120
     console.log('recursive', findFactorialRecursive(7)) // 5040
