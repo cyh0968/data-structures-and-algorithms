@@ -197,66 +197,69 @@ function traverse(node) {
     return tree;
 }
 
-const tree = new BinarySearchTree();
+module.exports = () => {
+    const tree = new BinarySearchTree();
 
-tree.insert(9);
-tree.insert(4);
-tree.insert(6);
-tree.insert(20);
-tree.insert(170);
-tree.insert(15);
-tree.insert(1);
-tree.insert(45);
-tree.insert(57);
-tree.insert(38);
-tree.insert(24);
-tree.insert(42);
-tree.insert(39);
-tree.insert(43);
+    tree.insert(9);
+    tree.insert(4);
+    tree.insert(6);
+    tree.insert(20);
+    tree.insert(170);
+    tree.insert(15);
+    tree.insert(1);
+    tree.insert(45);
+    tree.insert(57);
+    tree.insert(38);
+    tree.insert(24);
+    tree.insert(42);
+    tree.insert(39);
+    tree.insert(43);
 
-// Result should be the following tree structure
-//      9
-//  4         20
-//1    6   15    170
-//  
-//                170
-//           45  
-//      38        57        
-//  24      42       
-//        39   43     
-
-
-// Test insert() method
-// JSON.stringify(traverse(tree.root));
-console.dir(tree.root);
-
-// Test lookup() method
-// if it fails to find the target node,
-// it returns null
-// console.log('check lookup:', tree.lookup(9));
-// console.log('check lookup:', tree.lookup(4));
-// console.log('check lookup:', tree.lookup(6));
-// console.log('check lookup:', tree.lookup(20));
-// console.log('check lookup:', tree.lookup(170));
-// console.log('check lookup:', tree.lookup(15));
-// console.log('check lookup:', tree.lookup(1));
-// console.log('check lookup:', tree.lookup(12)); // should be null
-// console.log('check lookup:', tree.lookup(19)); // should be null
+    // Result should be the following tree structure
+    //      9
+    //  4         20
+    //1    6   15    170
+    //  
+    //                170
+    //           45  
+    //      38        57        
+    //  24      42       
+    //        39   43     
 
 
-// Test findSuccessor() method
-// console.log(tree.findSuccessor(tree.lookup(45))); // should be 57
-// console.log(tree.findSuccessor(tree.lookup(38))); // should be 39
+    // Test insert() method
+    // JSON.stringify(traverse(tree.root));
+    console.dir(tree.root);
+
+    // Test lookup() method
+    // if it fails to find the target node,
+    // it returns null
+    // console.log('check lookup:', tree.lookup(9));
+    // console.log('check lookup:', tree.lookup(4));
+    // console.log('check lookup:', tree.lookup(6));
+    // console.log('check lookup:', tree.lookup(20));
+    // console.log('check lookup:', tree.lookup(170));
+    // console.log('check lookup:', tree.lookup(15));
+    // console.log('check lookup:', tree.lookup(1));
+    // console.log('check lookup:', tree.lookup(12)); // should be null
+    // console.log('check lookup:', tree.lookup(19)); // should be null
 
 
-// Test remove() method
-// const removedNode = tree.remove(38); // should return node 38
-// console.log('removed node \n',removedNode); // this should 38 without left, right children
-// console.log('root node \n', traverse(tree.root));
-// console.log('parent node \n',tree.lookup(45)); // this left node should be 39
-// console.log('successor node \n',tree.lookup(39)); // this child should be 42 on right
-// tree.remove(9);
-// console.log(tree.root);
+    // Test findSuccessor() method
+    // console.log(tree.findSuccessor(tree.lookup(45))); // should be 57
+    // console.log(tree.findSuccessor(tree.lookup(38))); // should be 39
 
-// console.log('remove', tree.remove(170)); // should return node 170
-// console.log(traverse(tree.root));
+
+    // Test remove() method
+    // const removedNode = tree.remove(38); // should return node 38
+    // console.log('removed node \n',removedNode); // this should 38 without left, right children
+    // console.log('root node \n', traverse(tree.root));
+    // console.log('parent node \n',tree.lookup(45)); // this left node should be 39
+    // console.log('successor node \n',tree.lookup(39)); // this child should be 42 on right
+    // tree.remove(9);
+    // console.log(tree.root);
+
+    // console.log('remove', tree.remove(170)); // should return node 170
+    // console.log(traverse(tree.root));
+}
+
