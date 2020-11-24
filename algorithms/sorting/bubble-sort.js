@@ -19,10 +19,10 @@ function bubbleSort2(array) {
     let count = 0;
     for (let i = 0; i < array.length; i++) {
         for (let j = 0; j < array.length; j++) {
-            if (array[j] > array[j+1]) {
+            if (array[j] > array[j + 1]) {
                 let temp = array[j];
-                array[j] = array[j+1];
-                array[j+1] = temp;
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
             }
             count++;
         }
@@ -32,11 +32,9 @@ function bubbleSort2(array) {
     return array;
 }
 
-const test = () => {
+module.exports = () => {
     const numbers1 = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0, 23, 100, 2323, 14, 67, 23, 12323, 45, 472];
     const numbers2 = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
     console.log(bubbleSort(numbers1));
     console.log(bubbleSort2(numbers2));
 }
-
-module.exports = test;
